@@ -7,10 +7,10 @@ def process_data(data):
 
 def concatenate_strings(strings: List[str]) -> str:
     return ''.join(strings)
-
-
 def display_name(message: str):
     print(message)
+
+
 
 
 def main():
