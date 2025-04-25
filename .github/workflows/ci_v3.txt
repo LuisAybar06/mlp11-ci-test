@@ -1,17 +1,16 @@
-name: CI
+name: CD
 
 on:
   push:
-    branches: 
+    branches:
       - main
 
-
 jobs:
-  tests:
+  test:
     runs-on: ubuntu-latest
 
     steps:
-      - name: checkout code
+      - name: Checkout code
         uses: actions/checkout@v3
 
       - name: Set up Python
@@ -19,17 +18,14 @@ jobs:
         with:
           python-version: '3.8'
 
-      - name: Venv Enviroment
+      - name: Install dependencies
         run: |
           python -m venv venv
           source venv/bin/activate
-
-      - name: Install dependencies
-        run: |
-          source venv/bin/activate
           pip install -r requirements.txt
-
-      - name: Custom linter
+          
+      #custom_linter_v1      
+      - name: Run custom linter
         run: |
           source venv/bin/activate
-          python custom_linter.py my_app tests
+          python custom_linter_v1.py my_app tests
